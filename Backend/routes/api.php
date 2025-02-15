@@ -14,6 +14,15 @@ Route::get('/user', function (Request $request) {
     return $request->user();
 })->middleware('auth:sanctum');
 
+Route::middleware('auth:api')->group(function () {
+    Route::get('/user', function (Request $request) {
+        return $request->user();
+    });
+
+    Route::get('/tasks', [TaskController::class, 'getTasks']);
+    Route::get('/users', [UserController::class, 'getUsers']);
+    Route::post('/users', [UserController::class, 'createUser']);
+});
 
 Route::get('/tasks', [TaskController::class, 'getTasks']);
 
