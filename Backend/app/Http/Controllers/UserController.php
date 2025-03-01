@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Services\UserService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\DB;
 
 class UserController extends Controller
 {
@@ -18,28 +17,55 @@ class UserController extends Controller
 
     public function getUsers()
     {
-        $users = $this->userService->getAllUsers();
-        return response()->json($users);
+        return response()->json($this->userService->getAllUsers());
     }
 
     public function createUser(Request $request)
     {
-        // Validate request data
-        $request->validate([
+        $validatedData = $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|email|unique:users,email',
-            'password' => 'required|string|min:3'
+            'password' => 'required|string|min:3',
+            'age' => 'required|integer',
+            'balance' => 'numeric'
         ]);
 
-        // Hash password
-        $hashedPassword = Hash::make($request->password);
+        $hashedPassword = Hash::make($validatedData['password']);
 
-        // Create user using UserService
-        $user = $this->userService->createUser($request->name, $request->email, $hashedPassword);
+        $user = $this->userService->createUser(
+            $validatedData['name'],
+            $validatedData['email'],
+            $hashedPassword,
+            $validatedData['age'],
+            $validatedData['balance'] ?? 0
+        );
 
-        return response()->json([
-            'message' => 'User registered successfully!',
-            'user' => $user
-        ], 201);
+        return response()->json(['message' => 'User registered successfully!', 'user' => $user], 201);
+    }
+
+    public function getUsersByAgeRange(Request $request)
+    {
+        return response()->json($this->userService->getUsersByAgeRange(
+            $request->query('min_age'),
+            $request->query('max_age')
+        ));
+    }
+
+    public function getUsersWithMinBalance(Request $request)
+    {
+        return response()->json($this->userService->getUsersWithMinBalance($request->query('min_balance')));
+    }
+
+    public function searchUsers(Request $request)
+    {
+        return response()->json($this->userService->searchUsers($request->query('keyword')));
+    }
+
+    public function getSortedUsers(Request $request)
+    {
+        return response()->json($this->userService->getSortedUsers(
+            $request->query('orderBy'),
+            $request->query('orderDirection')
+        ));
     }
 }
