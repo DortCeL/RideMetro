@@ -36,7 +36,7 @@ export const Header = () => {
 							<Link href='/lostandfound' passHref>
 								Lost & Found
 							</Link>
-							<Link href='/' passHref>
+							<Link href='/complaints/complainbox' passHref>
 								Complaints
 							</Link>
 							<Link href='/' passHref>
