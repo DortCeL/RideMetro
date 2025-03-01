@@ -36,13 +36,18 @@ export const Header = () => {
 							<Link href='/lostandfound' passHref>
 								Lost & Found
 							</Link>
-							<Link href='/complaints/complainbox' passHref>
+							<Link href='/' passHref>
 								Complaints
 							</Link>
 							<Link href='/' passHref>
 								Details
 							</Link>
-							<button className='btn btn-primary animate-bounce'>Log In</button>
+
+							<Link href={"/login"}>
+								<button className='btn btn-primary animate-bounce'>
+									Log In
+								</button>
+							</Link>
 						</nav>
 					</div>
 				</div>
