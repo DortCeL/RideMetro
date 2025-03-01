@@ -12,19 +12,9 @@ export default function Page() {
 
 	return (
 		<>
-			<AdminHeader />
-			<div className='flex flex-row'>
-				{/* Sidebar */}
-				<AdminSidebar />
-
-				{/* Main Content */}
-				<div className='flex-1 flex flex-col bg-gray-100'>
-					{/* Content Area */}
-					<h2 className='text-5xl text-center tracking-tighter py-5'>
-						Welcome to Admin Dashboard!{" "}
-					</h2>
-				</div>
-			</div>
+			<h2 className='text-5xl text-center tracking-tighter py-5'>
+				Welcome to Admin Dashboard!{" "}
+			</h2>
 		</>
 	);
 }
