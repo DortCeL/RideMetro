@@ -28,7 +28,9 @@
 		".next/types/**/*.ts",
 		"src/components/Clock.jsx",
 		"src/sections/Pricing.jsx",
-		"src/app/lostandfound/page.jsx"
+		"src/app/lostandfound/page.jsx",
+		"src/services/userService.js",
+		"src/app/login/page.jsx"
 	],
 	"exclude": ["node_modules"]
 }
