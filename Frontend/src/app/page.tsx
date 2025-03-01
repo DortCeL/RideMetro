@@ -4,6 +4,8 @@ import CustomMarquee from "@/components/CustomMarquee";
 import { Pricing } from "@/sections/Pricing";
 import { Footer } from "@/sections/Footer";
 
+import { AuthProvider } from "../context/AuthContext";
+
 export default function Home() {
 	return (
 		<>

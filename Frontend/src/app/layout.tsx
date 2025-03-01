@@ -3,6 +3,8 @@ import { DM_Sans } from "next/font/google";
 import "./globals.css";
 import clsx from "clsx";
 
+import { AuthProvider } from "../context/AuthContext";
+
 const dmSans = DM_Sans({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
@@ -18,7 +20,7 @@ export default function RootLayout({
 	return (
 		<html lang='en' className='relative'>
 			<body className={clsx(dmSans.className, "antialiased bg-[#e7e4d9]")}>
-				{children}
+				<AuthProvider>{children}</AuthProvider>
 			</body>
 			{/* //! original */}
 			{/* <body className={clsx(dmSans.className, "antialiased bg-[#EAEEFE]")}>
