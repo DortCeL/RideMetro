@@ -14,7 +14,7 @@ export const AdminHeader = () => {
 				</div>
 				<h1 className='text-xl font-bold tracking-wider'>Admin Panel</h1>
 				<div>
-					<Link href='/admin'>
+					<Link href='/admin/dashboard/users'>
 						<button className='px-4 py-2 bg-gray-800 text-white rounded'>
 							Logout
 						</button>
