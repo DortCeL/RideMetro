@@ -1,6 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import url('https://fonts.googleapis.com/css2?family=Caladea:ital,wght@0,400;0,700;1,400;1,700&family=Lora:ital,wght@0,400..700;1,400..700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
 html {
 	scroll-behavior: smooth;
@@ -87,4 +88,147 @@ html {
   body {
     @apply bg-background text-foreground;
 	}
+}
+
+
+
+/* RideMetro heading animation in complain page side bar*/
+.ride-metro {
+    position: relative;
+    display: inline-block;
+    font-size: 30px; /* Larger size */
+    font-weight: bold; /* Bold text */
+    color: transparent;
+    -webkit-text-stroke: 0.7px #7cf03d;
+    animation: display-text 12s linear infinite;
+    animation-delay: 0s;
+}
+
+@keyframes display-text {
+    0%, 100% {
+        display: inline-block; /* Ensure the text is visible */
+    }
+}
+
+.ride-metro::before {
+	content: attr(data-text);
+    position: absolute;
+    width: 0;
+    border-right: 2px solid #7cf03d;
+    color: #7cf03d;
+    white-space: nowrap;
+    overflow: hidden;
+    animation: fill-text 3s ease-in-out infinite; /* Smooth back-and-forth */
+}
+
+@keyframes fill-text {
+    0% {
+        width: 0%;
+    }
+    25% {
+        width: 100%; /* Line reaches full width */
+    }
+    50% {
+        width: 0%; /* Line goes back to 0 */
+    }
+    75% {
+        width: 100%; /* Line reaches full width again */
+    }
+    100% {
+        width: 0%; /* Line goes back to 0 */
+    }
+}
+
+
+/*Submit button animation*/
+ .form_btn{
+    display: inline-block; 
+    padding: 10px 30px;
+    background: transparent;
+    border:  2px solid #7cf03d;
+    border-radius: 40px;
+    box-shadow: 0 0 10px #7cf03d;
+    font-size: 16px;
+    color: #fff;
+    font-weight: 600;
+    transition: .5s;
+
+}
+
+
+ .form_btn:hover{
+    background: #7cf03d;
+    color: #1f242d;
+    box-shadow: none;
+}
+
+
+/*Complain form heading animation*/
+.metro-heading {
+    background: linear-gradient(45deg, #ff7e5f, #feb47b, #ff6a6a, #ffcc70);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    font-size: 2.5rem;
+    font-weight: bold;
+	font-family: "Caladea", serif;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    transition: all 0.3s ease;
+    position: relative;
+    display: inline-block;
+}
+
+.metro-heading::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -5px;
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(45deg, #ff7e5f, #feb47b, #ff6a6a, #ffcc70);
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.3s ease;
+}
+
+.metro-heading:hover {
+    transform: scale(1.05);
+}
+
+.metro-heading:hover::after {
+    transform: scaleX(1);
+    transform-origin: left;
+}
+
+/*Dashboard Heading*/
+.complain_container {
+    display: flex;
+    justify-content: center;  /* Centers the text horizontally */
+    align-items: center;  /* Centers vertically */
+    height: 100px;  /* Adjust height as needed */
+    width: 100%;
+}
+
+.complain_dashboard {
+    font-size: 3rem;
+    letter-spacing: 5px;
+    font-weight: bold;
+    font-family: "Caladea", serif;
+    white-space: nowrap;
+    overflow: hidden;
+    width: 0;  /* Start from 0 width */
+    text-align: center;
+    animation: typing 10s  forwards;
+   
+}
+
+/* Typing effect */
+@keyframes typing {
+    from { width: 0; }
+    to { width: 100%; }
+}
+
+.graph_heading{
+    font-family: "Caladea", serif;
 }
