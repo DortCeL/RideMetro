@@ -42,7 +42,12 @@ export const Header = () => {
 							<Link href='/' passHref>
 								Details
 							</Link>
-							<button className='btn btn-primary animate-bounce'>Log In</button>
+
+							<Link href={"/login"}>
+								<button className='btn btn-primary animate-bounce'>
+									Log In
+								</button>
+							</Link>
 						</nav>
 					</div>
 				</div>
