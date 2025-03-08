@@ -43,7 +43,7 @@ export const Header = () => {
 							<Link href='/lostandfound' passHref>
 								Lost & Found
 							</Link>
-							<Link href='/complaints/complainbox' passHref>
+							<Link href='/complaints' passHref>
 								Complaints
 							</Link>
 							<Link href='/' passHref>
