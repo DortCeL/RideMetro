@@ -13,7 +13,7 @@ export default function DashboardLayout({ children }) {
 				<AdminSidebar />
 
 				{/* Main Content */}
-				<div className='flex-1 p-4 bg-gray-100'>{children}</div>
+				<div className='flex-1 p-4 bg-slate-100'>{children}</div>
 			</div>
 		</>
 	);
