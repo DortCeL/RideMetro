@@ -13,7 +13,7 @@ export default function Page() {
 	return (
 		<>
 			<h2 className='text-5xl text-center tracking-tighter py-5'>
-				Welcome to Admin Dashboard!{" "}
+				Welcome to Admin Dashboard! we have 54 queries so far
 			</h2>
 		</>
 	);
