@@ -77,3 +77,52 @@ The platform is for mass people.
 ## 💻 UI / UX Demo
 
 Check out the live demonstration here: [Project Demo Link](https://www.figma.com/design/Ibnmy4wEDEjStA5Z8QSuQK/RideMetro?node-id=0-1&p=f&t=wdibMmxQ6cmhf7Fk-0)
+
+### Setup Instruction:
+
+     Follow the steps below to set up the project on your local system:
+
+     1.	Prerequisites
+               Before proceeding, ensure you have the following installed:
+               -	PHP (>=8.0)
+               -	Composer (PHP Dependency Manager)
+               -	Laravel (Latest version)
+               -	MySQL (or any preferred database)
+               -	Node.js & npm (for frontend dependencies)
+               -	Git (optional, but recommended)
+
+     2.	Clone the Repository
+               git clone https://github.com/DortCeL/RideMetro.git
+               cd RideMetro
+
+     3.	Install Backend dependencies
+
+               cd backend
+               composer install
+
+               Copy the .env.example file and rename it to .env
+
+               Open the .env file and update the following:
+                    APP_NAME= Laravel
+                    APP_ENV=local
+                    APP_KEY=
+                    APP_DEBUG=true
+                    APP_URL=http://localhost
+                    DB_CONNECTION=mysql
+                    DB_HOST=127.0.0.1
+                    DB_PORT=8000
+                    DB_DATABASE=ridemetro
+                    DB_USERNAME=root
+                    DB_PASSWORD=
+
+     4.	Run Backend
+
+               php artisan serve
+
+     5.	Install Frontend Dependencies
+
+               cd frontend
+               npm install
+
+     6.   Run Frontend
+               npm run dev
