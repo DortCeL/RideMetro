@@ -10,6 +10,13 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 
+//Authentication routes
+Route::post('/register', [AuthController::class, 'register']);
+Route::post('/login', [AuthController::class, 'login']);
+Route::post('/logout', [AuthController::class, 'logout'])->middleware('auth:sanctum');
+// currently logged-in user
+Route::get('/user', [AuthController::class, 'user'])->middleware('auth:sanctum');
+
 
 
 // user routes
