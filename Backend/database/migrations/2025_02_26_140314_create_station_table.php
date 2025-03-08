@@ -15,7 +15,7 @@ return new class extends Migration
             CREATE TABLE stations (
                 station_id INT AUTO_INCREMENT PRIMARY KEY,
                 station_name VARCHAR(255) NOT NULL,
-                state VARCHAR(100) NOT NULL,
+                state VARCHAR(100) NOT NULL DEFAULT 'open',
                 created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
                 updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
             )
