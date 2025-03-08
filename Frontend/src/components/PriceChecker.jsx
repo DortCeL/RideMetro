@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 import {
 	Select,
@@ -12,7 +12,7 @@ import {
 export const PriceChecker = () => {
 	const [from, setFrom] = useState("");
 	const [to, setTo] = useState("");
-	const [price, setPrice] = useState(null);
+	const [price, setPrice] = useState("");
 
 	const locations = [
 		"Uttara North",
@@ -34,13 +34,25 @@ export const PriceChecker = () => {
 		"Kamalapur",
 	];
 
-	const calculatePrice = () => {
-		if (from && to && from !== to) {
-			const basePrice = 20; // Base price
-			const randomFactor = Math.random() * 10;
-			setPrice((basePrice + randomFactor).toFixed(0));
-		} else {
-			setPrice("Invalid selection");
+	const calculatePrice = async (source, destination) => {
+		try {
+			const response = await fetch(
+				`http://localhost:8000/api/tickets/price?source=${source}&destination=${destination}`
+			);
+
+			const text = await response.text(); // Get raw response
+			console.log("Raw response:", text); // Log raw response
+
+			const data = JSON.parse(text); // Parse JSON manually
+			console.log("Parsed JSON:", data); // Log parsed JSON
+
+			if (!response.ok) {
+				throw new Error(data.error || "Failed to fetch price");
+			}
+
+			setPrice(text);
+		} catch (error) {
+			console.error("Error fetching price:", error.message);
 		}
 	};
 
@@ -68,19 +80,6 @@ export const PriceChecker = () => {
 							))}
 						</SelectContent>
 					</Select>
-
-					{/* <select
-						className='w-full p-3 border rounded-full focus:outline-none'
-						value={from}
-						onChange={(e) => setFrom(e.target.value)}
-					>
-						<option value=''>Select a location</option>
-						{locations.map((location) => (
-							<option key={location} value={location}>
-								{location}
-							</option>
-						))}
-					</select> */}
 				</div>
 				<div>
 					<label className='block text-gray-700 font-medium mb-2'>To:</label>
@@ -102,11 +101,12 @@ export const PriceChecker = () => {
 				</div>
 				<button
 					className='w-full bg-black text-white py-3 rounded-lg font-semibold transition duration-300'
-					onClick={calculatePrice}
+					onClick={() => calculatePrice(from, to)} // Pass source & destination
 				>
 					Check Price
 				</button>
-				{price && (
+
+				{
 					<div className='mt-4 text-center text-lg font-medium'>
 						{price === "Invalid selection" ? (
 							<p className='text-red-500'>
@@ -118,7 +118,7 @@ export const PriceChecker = () => {
 							</p>
 						)}
 					</div>
-				)}
+				}
 			</div>
 		</div>
 	);
