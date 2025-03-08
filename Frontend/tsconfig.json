@@ -30,7 +30,10 @@
 		"src/sections/Pricing.jsx",
 		"src/app/lostandfound/page.jsx",
 		"src/services/userService.js",
-		"src/app/login/page.jsx"
+		"src/app/login/page.jsx",
+		"src/app/page.jsx",
+		"src/app/layout.jsx",
+		"src/sections/Header.jsx"
 	],
 	"exclude": ["node_modules"]
 }

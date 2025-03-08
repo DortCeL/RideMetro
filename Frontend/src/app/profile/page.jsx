@@ -1,34 +1,28 @@
 "use client";
 
 import { useContext, useEffect } from "react";
-import { AuthContext } from "../../context/AuthContext";
+import { AuthContext } from "@/context/AuthContext";
 import { useRouter } from "next/navigation";
 
-export default function Profile() {
-	const { user, logout, loading } = useContext(AuthContext);
+export default function ProfilePage() {
+	const auth = useContext(AuthContext);
 	const router = useRouter();
 
 	useEffect(() => {
-		if (!loading && !user) {
-			console.log(user);
+		if (!auth.loading && !auth.user) {
 			router.push("/login");
 		}
-	}, [loading, user]);
+	}, [auth.loading, auth.user, router]);
 
-	if (loading) return <p>Loading...</p>;
+	if (auth.loading) return <p>Loading...</p>;
+
+	if (!auth.user) return null; // Prevents flickering before redirect
 
 	return (
-		<div>
-			<h2>Welcome, {user?.name}!</h2>
-			<p>Email: {user?.email}</p>
-			<button
-				onClick={() => {
-					logout();
-					router.push("/login");
-				}}
-			>
-				Logout
-			</button>
+		<div className='flex flex-col items-center justify-center min-h-screen'>
+			<h2 className='text-2xl'>Welcome, {auth.user.name}!</h2>
+			<p>Email: {auth.user.email}</p>
+			<button onClick={() => auth.logout()}>Logout</button>
 		</div>
 	);
 }
