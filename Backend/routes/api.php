@@ -73,4 +73,28 @@ Route::prefix('staff')->group(function () {
     Route::get('/highest-paid-other-gender', [StaffController::class, 'getHighestPaidOtherGenderStaff']);
 });
 
+// Station routes
+Route::prefix('stations')->group(function () {
+    Route::get('/', [StationController::class, 'getAllStations']);
+    Route::get('/{id}', [StationController::class, 'getStationById']);
+    Route::put('/{id}', [StationController::class, 'updateStationState']);
+    Route::get('/open', [StationController::class, 'getOpenStations']);
+    Route::get('/closed', [StationController::class, 'getClosedStations']);
+});
+
+
+// Complaint Routes
+Route::prefix('complaints')->group(function () {
+    Route::get('/', [ComplaintController::class, 'getAllComplaints']);
+    Route::post('/', [ComplaintController::class, 'createComplaint']);
+    Route::get('/search', [ComplaintController::class, 'searchComplaints']);
+    Route::get('/user-complaints', [ComplaintController::class, 'getUserComplaints']);
+    Route::get('/station-complaints', [ComplaintController::class, 'getStationComplaints']);
+    Route::get('/count/users', [ComplaintController::class, 'getUserComplaintCounts']);
+    Route::get('/count/stations', [ComplaintController::class, 'getStationComplaintCounts']);
+    Route::get('/resolved', [ComplaintController::class, 'getResolvedComplaints']);
+    Route::get('/pending', [ComplaintController::class, 'getPendingComplaints']);
+    Route::get('/status-count/stations', [ComplaintController::class, 'getStationComplaintStatusCounts']);
+    Route::put('/toggle-status/{complaint_id}', [ComplaintController::class, 'toggleComplaintStatus']);
+});
 
