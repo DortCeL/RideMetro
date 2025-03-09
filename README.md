@@ -126,3 +126,11 @@ Check out the live demonstration here: [Project Demo Link](https://www.figma.com
 
      6.   Run Frontend
                npm run dev
+
+### What we failed to achieve:
+
+    1. We do not have purchase functionality for tickets yet.
+    2. Admin panel will have an authentication in the future.
+    3. Complaints and Lost&Found items cannot be reported yet.
+    4. Google map integration with this project is yet to be done.
+    5. Deployment to a hosting server is yet to be done.
