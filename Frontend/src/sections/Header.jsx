@@ -46,9 +46,6 @@ export const Header = () => {
 							<Link href='/complaints' passHref>
 								Complaints
 							</Link>
-							<Link href='/' passHref>
-								Details
-							</Link>
 
 							{/* Show Log In if no user, else show Profile */}
 							{auth?.user ? (

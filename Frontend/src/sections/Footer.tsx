@@ -23,11 +23,9 @@ export const Footer = () => {
 					/>
 				</div>
 				<nav className='flex flex-col gap-6 mt-6 md:flex-row md:justify-center'>
-					<a href='#'>Home</a>
-					<a href='#'>Contact</a>
-					<a href='#'>About</a>
-					<a href='#'>Blog</a>
-					<a href='#'>Help</a>
+					<a href='/'>Home</a>
+					<a href='/complaints'>Complaints</a>
+					<a href='/lostandfound'>Lost and Found</a>
 				</nav>
 				<div className='flex justify-center gap-6 my-6'>
 					<SocialX />
